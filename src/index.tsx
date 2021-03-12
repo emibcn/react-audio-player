@@ -44,32 +44,32 @@ class ReactAudioPlayer extends Component<ReactAudioPlayerProps> {
 
   listenTracker?: number
 
-  onError = (e) => this.props.onError(e);
-  onCanPlay = (e) => this.props.onCanPlay(e);
-  onCanPlayThrough = (e) => this.props.onCanPlayThrough(e);
-  onPlay = (e) => {
+  onError = (e: any) => this.props.onError(e);
+  onCanPlay = (e: any) => this.props.onCanPlay(e);
+  onCanPlayThrough = (e: any) => this.props.onCanPlayThrough(e);
+  onPlay = (e: any) => {
     this.setListenTrack();
     this.props.onPlay(e);
   }
-  onAbort = (e) => {
+  onAbort = (e: any) => {
     this.clearListenTrack();
     this.props.onAbort(e);
   }
-  onEnded = (e) => {
+  onEnded = (e: any) => {
     this.clearListenTrack();
     this.props.onEnded(e);
   }
-  onPause = (e) => {
+  onPause = (e: any) => {
     this.clearListenTrack();
     this.props.onPause(e);
   }
-  onSeeked = (e) => {
+  onSeeked = (e: any) => {
     this.props.onSeeked(e);
   }
-  onLoadedMetadata = (e) => {
+  onLoadedMetadata = (e: any) => {
     this.props.onLoadedMetadata(e);
   }
-  onVolumeChanged = (e) => {
+  onVolumeChanged = (e: any) => {
     this.props.onVolumeChanged(e);
   }
 
@@ -101,7 +101,7 @@ class ReactAudioPlayer extends Component<ReactAudioPlayerProps> {
     audio.addEventListener('pause', this.onPause);
 
     // When the user drags the time indicator to a new time
-    audio.addEventListener('seeked', this.onSeekEnd);
+    audio.addEventListener('seeked', this.onSeeked);
 
     audio.addEventListener('loadedmetadata', this.onLoadedMetadata);
 
@@ -135,7 +135,7 @@ class ReactAudioPlayer extends Component<ReactAudioPlayerProps> {
     audio.removeEventListener('pause', this.onPause);
 
     // When the user drags the time indicator to a new time
-    audio.removeEventListener('seeked', this.onSeekEnd);
+    audio.removeEventListener('seeked', this.onSeeked);
 
     audio.removeEventListener('loadedmetadata', this.onLoadedMetadata);
 
